@@ -5,13 +5,16 @@ class Chronometer {
         this.intervalId = 0;
   }
   startClick(callback) {
-    let i = 0;
-    this.currentTime = setInterval(() => {
-    console.log(i);
-    i++;
+    this.intervalId = setInterval(() => {
+    //console.log(i);
+    this.currentTime++;
     
-    if (i === 3) {
+    /*if (i === 3) {
        this.currentTime = 3;
+    }*/
+
+    if(callback) {
+      callback()
     }
     }, 1000);
     }
@@ -25,7 +28,8 @@ class Chronometer {
     if (number < 10) {
       return `0${number}`;
     } 
-    return number
+    return `${number}`
+
   }
   stopClick() {
     return clearInterval(this.intervalId);
